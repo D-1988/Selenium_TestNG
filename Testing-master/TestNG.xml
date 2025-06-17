@@ -4,7 +4,7 @@
 	<test thread-count="3" name="TestNG">
 		<classes>
 			<class name="testClassPackage.TestClass" />
-			<class name="testClassPackage.TestClass1" />
+			
 		</classes>
 	</test>
 </suite>
