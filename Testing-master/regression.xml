@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="User acceptance TestSuite">
-	<test name="Expense Tracker Validattion">
+<suite name="regression">
+	<test thread-count="3" name="regression">
 		<classes>
 			<class name="testClassPackage.TestClass" />
 			<class name="testClassPackage.TestClass1" />
