@@ -1,21 +1,29 @@
 pipeline {
-    agent {
-        node {
-            label 'master'
-              }
-           }
+    agent any
 
-          options {
-                timestamps()
-          }
-
-          stages {
-            stage("Checkout , Test & Publish"){
-                checkout scm
-                script {
-                    bat(/mvn clean test/)
-                }
-                step ([$class: 'Publisher' , reportFileNamePattern:'**/testng-results.xml'])
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://your-repo-url.git'  // Replace with your repository URL
             }
-          }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean compile'  // Compiles the project
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh 'mvn test'  // Runs TestNG test scripts
+            }
+        }
+
+        stage('Post-Processing') {
+            steps {
+                junit '**/target/surefire-reports/*.xml'  // Collects test results
+            }
+        }
+    }
 }
